@@ -86,14 +86,14 @@
 </head>
 <body>
   <header>
-    <img src="public/Wes.jpg" alt="Wesley Kao">
+    <img src="Wes.jpg" alt="Wesley Kao">
     <h1>Wesley Kao</h1>
     <p>Docketing Specialist • Aspiring Legal Professional</p>
   </header>
 
   <nav>
-    <button class="tab active" onclick="showTab('about')">About</button>
-    <button class="tab" onclick="showTab('cv')">CV</button>
+    <button class="tab active" onclick="showTab('about', this)">About</button>
+    <button class="tab" onclick="showTab('cv', this)">CV</button>
   </nav>
 
   <main>
@@ -121,7 +121,7 @@
     </section>
 
     <section id="cv">
-      <iframe src="public/Wesley_Resume2024.pdf"></iframe>
+      <iframe src="Wesley_Resume2024.pdf"></iframe>
     </section>
   </main>
 
@@ -131,12 +131,12 @@
   </footer>
 
   <script>
-    function showTab(tabId) {
+    function showTab(tabId, btn) {
       document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
       document.getElementById(tabId).classList.add("active");
 
-      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
-      event.target.classList.add("active");
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
     }
   </script>
 </body>
