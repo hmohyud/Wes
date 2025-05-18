@@ -14,13 +14,13 @@
     }
     header {
       background-color: #fff;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     header img {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -28,10 +28,23 @@
       margin: 1rem 0 0.5rem;
       font-size: 2rem;
     }
-    header p {
-      margin: 0;
-      font-size: 1.1rem;
-      color: #555;
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #eaeaea;
+      border-top: 1px solid #ccc;
+    }
+    nav button {
+      padding: 1rem;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    nav button.active {
+      border-bottom: 3px solid #0073b1;
+      font-weight: bold;
+      background-color: #ddd;
     }
     main {
       max-width: 800px;
@@ -39,7 +52,10 @@
       padding: 0 1rem;
     }
     section {
-      margin-bottom: 2rem;
+      display: none;
+    }
+    section.active {
+      display: block;
     }
     h2 {
       border-bottom: 2px solid #ccc;
@@ -55,16 +71,16 @@
     .role p {
       margin: 0;
     }
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
     footer {
       text-align: center;
       padding: 1rem;
       background-color: #fff;
       border-top: 1px solid #ccc;
-    }
-    footer a {
-      margin: 0 0.5rem;
-      color: #0073b1;
-      text-decoration: none;
     }
   </style>
 </head>
@@ -72,69 +88,56 @@
   <header>
     <img src="profile.jpg" alt="Wesley Kao">
     <h1>Wesley Kao</h1>
-    <p>Docketing Specialist • Aspiring Legal Professional • Team Leader</p>
+    <p>Docketing Specialist • Aspiring Legal Professional</p>
   </header>
+
+  <nav>
+    <button class="tab active" onclick="showTab('about')">About</button>
+    <button class="tab" onclick="showTab('cv')">CV</button>
+  </nav>
+
   <main>
-    <section>
+    <section id="about" class="active">
       <h2>About Me</h2>
       <p>
         I’m a legal support professional currently working at Jenner & Block LLP in Chicago. With experience in both law firms and mock trial competition, I bring a disciplined, communicative, and detail-oriented approach to every challenge I take on.
       </p>
-    </section>
-    <section>
+
       <h2>Experience</h2>
       <div class="role">
-        <h3>Docketing Specialist – Jenner & Block LLP (2023–Present)</h3>
-        <p>
-          Manage court filings and deadline tracking across 1000s of cases. Deliver training sessions and research filing protocols using tools like PACER, Bloomberg Law, and JuraLaw.
-        </p>
+        <h3>Docketing Specialist – Jenner & Block LLP</h3>
+        <p>Manage court filings, deadlines, and research for 1000s of cases. Deliver training and ensure adherence to procedures using PACER, Bloomberg Law, Lexis, JuraLaw.</p>
       </div>
       <div class="role">
-        <h3>Law Clerk – Kathleen Zellner & Associates (2022)</h3>
-        <p>
-          Reviewed and drafted legal materials for wrongful conviction cases. Collaborated directly with attorneys and communicated with correctional institutions and legal stakeholders.
-        </p>
+        <h3>Law Clerk – Kathleen Zellner & Associates</h3>
+        <p>Worked on over 20 wrongful conviction cases. Reviewed legal documents, drafted correspondence, and collaborated with attorneys.</p>
       </div>
-    </section>
-    <section>
-      <h2>Leadership & Activities</h2>
-      <div class="role">
-        <h3>Mock Trial – Wheaton College (2019–2022)</h3>
-        <p>
-          Competed in 26 tournaments as attorney and witness. Developed oral advocacy, legal analysis, and case strategy skills on a top-ranked team.
-        </p>
-      </div>
-      <div class="role">
-        <h3>Baseball – Wheaton College (2019–2022)</h3>
-        <p>
-          NCAA DIII pitcher, balancing academics and athletics with a 40-hour weekly commitment. Honed discipline, focus, and team leadership.
-        </p>
-      </div>
-    </section>
-    <section>
+
       <h2>Education</h2>
-      <p>
-        B.A. in Political Science, Minor in Communication<br/>
-        Wheaton College, Wheaton, IL
-      </p>
-    </section>
-    <section>
+      <p>B.A. in Political Science, Minor in Communication<br/>Wheaton College, IL</p>
+
       <h2>Skills</h2>
-      <p>
-        Microsoft Office, Lexis, Bloomberg, JuraLaw, CompuLaw, Stata, PACER, Docketbird, NAPPS, Courthouse News Service<br/>
-        Conversational Mandarin Chinese
-      </p>
+      <p>Microsoft Office, Lexis, Bloomberg, JuraLaw, Mandarin Chinese (conversational)</p>
     </section>
-    <section>
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:wesley.kao@gmail.com">Email</a> |
-        <a href="https://www.linkedin.com/in/wesleykao/">LinkedIn</a>
-      </p>
+
+    <section id="cv">
+      <iframe src="wesley_resume.pdf"></iframe>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 Wesley Kao</p>
+    <p>Contact: <a href="mailto:wesley.kao@gmail.com">wesley.kao@gmail.com</a> | 
+    <a href="https://www.linkedin.com/in/wesleykao/">LinkedIn</a></p>
   </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+
+      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+    }
+  </script>
 </body>
 </html>
